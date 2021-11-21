@@ -46,6 +46,8 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v2
+  
+      - run:  pip3 install requests
 
       - run: docker run --rm -v /django.nv:/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
 
