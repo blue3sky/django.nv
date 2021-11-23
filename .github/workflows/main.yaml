@@ -47,12 +47,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run:  pip install -r requirements.txt
+      #- run:  pip install -r requirements.txt
 
-      - run:  pip install requests
-  
-  - run: import sys
-  
+      #- run:  pip install requests
+
+      - run: import sys
+
       - run: sys.path add /usr/lib/python3/dist-packages/  
 
       - run: docker run --rm -v /django.nv:/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
