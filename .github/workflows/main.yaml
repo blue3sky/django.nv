@@ -62,8 +62,8 @@ jobs:
  
       - run: |
          pip3 install requests
-         python3 upload-results.py --host $DOJO_HOST --api_key $DOJO_API_TOKEN --engagement_id 1 --product_id 1 --lead_id 1 --environment "Production" --result_file bandit-output.json --scanner "Bandit Scan"
-          
+         python3 upload-results.py --host ${{ secrets.DOJO_HOST }} --api_key ${{ secrets.DOJO_API_TOKEN }} --engagement_id 1 --product_id 1 --lead_id 1 --environment "Production" --result_file bandit-output.json --scanner "Bandit Scan" 
+
   integration:
     runs-on: ubuntu-latest
     needs: test
