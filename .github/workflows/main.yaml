@@ -51,7 +51,7 @@ jobs:
 
       #- run:  pip install requests
 
-      - run: import sys
+      - run: import sys.path
 
       - run: sys.path add /usr/lib/python3/dist-packages/  
 
