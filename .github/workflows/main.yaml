@@ -50,6 +50,8 @@ jobs:
       - run:  pip3 install -r requirements.txt
 
       - run:  pip3 install requests
+  
+      - run: sys.path add /usr/lib/python3/dist-packages/  
 
       - run: docker run --rm -v /django.nv:/src hysnsec/bandit -r /src -f json -o /src/bandit-output.json
 
