@@ -1,6 +1,5 @@
 jobs:
-    echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-    build:
+  build:
     docker:
       - image: python:3.6                   # similar to "image" in GitLab
     steps:
@@ -18,15 +17,6 @@ jobs:
           pip install -r requirements.txt
           python manage.py test taskManager
 
-  release:
-    machine: true                                        # What is this for?
-    steps:
-      - checkout
-
-      - run: |
-          docker build -t $DOCKER_USERNAME/django.nv .   # Build the application into Docker image
-          docker push $DOCKER_USERNAME/django.nv         # Push the image into registry
-
   integration:
     docker:
       - image: python:3.6
@@ -36,7 +26,6 @@ jobs:
           command: |
             echo "This is an integration step"
             exit 1
-          when: always                    # Even if the job fails, continue to the next stages
 
   prod:
     docker:
